@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MVC_Enterprise_Organization.Models.HRData>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>HR_Datas</h2>
+
+<p>
+    @Html.ActionLink("Create New Record", "Create", null, new { @class = "btn btn-info" })
+</p>
+
+<p>
+
+    @using (Html.BeginForm("SearchResult", "HRDatas"))
+    {
+        @*<input type="text" name="searchText" />*@
+        @Html.TextBox("searchText", (object)ViewBag.Name)
+        <input type="submit" value="Search Employee" />
+    }
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SSN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

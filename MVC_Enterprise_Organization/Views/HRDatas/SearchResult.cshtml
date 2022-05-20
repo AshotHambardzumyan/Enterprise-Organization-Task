@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MVC_Enterprise_Organization.Models.Employee>
+
+@{
+    ViewBag.Title = "SearchResult";
+}
+
+<h2>Search Result</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Letter)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Letter)
+            </td>
+            <td>
+                @Html.ActionLink("SendMessage", "SendMessage", new { id = item.Id }, new { @class = "btn btn-success" })
+            </td>
+        </tr>
+
+        @*@using (Html.BeginForm())
+            {*@
+        @*@Html.LabelFor(modelItem => item.Letter, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <!--<div class="col-md-10">-->
+        @*@Html.EditorFor(modelItem => item.Letter, new { htmlAttributes = new { @class = "form-control" } })*@
+        @*@Html.ValidationMessageFor(modelItem => item.Letter, "", new { @class = "text-danger" })*@
+        <!--</div>
+        <input type="submit" />-->
+        @*}*@
+    }
+
+</table>
